@@ -235,6 +235,15 @@ class PDBdataset():
                 .pow(2).reshape(len(self.pdbs)-1, -1).sum(1)\
                 .div(combined_masks.sum(1).squeeze()).sqrt()
 
+            # File tracker
+            file_path = "0." + output_file
+            with open(file_path, "r") as file:
+                number = int(file.read().strip())
+            number += 1
+            with open(file_path, "w") as file:
+                file.write(str(number))
+
+            # Write the data
             with open(output_file, 'a', encoding='utf-8') as rmsd_file:
                 if first:
                     rmsd_file.write(f"reference\t{self.pdbs[0]}\n")
