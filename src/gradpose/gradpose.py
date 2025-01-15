@@ -75,6 +75,8 @@ def superpose(pdbs_list, template, output=None, residues=None, chain=None, cores
         data_processor.optimize()
         data_processor.rotate_all_with_multiprocessing()
         if rmsd_path:
+            if verbosity > 0:
+                print('Calculating RMSD... ', end='', flush=True)
             data_processor.calc_rmsd_with_template(rmsd_path, first = i==0)
 
     if verbosity > 0:
