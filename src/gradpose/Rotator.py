@@ -101,10 +101,13 @@ class Rotator():
 
         if self.use_numpy:
             lib = np
-        else: lib=torch
+        else:
+            lib=torch
         # Apply the rotation matrix
         if pdb_index:
             return lib.matmul(xyz, rotation_matrix[pdb_index:pdb_index+1])
+        print(self.xyz)
+        print(rotation_matrix)
         return lib.matmul(self.xyz, rotation_matrix)
 
     def _normalize(self, quaternions):
