@@ -244,6 +244,7 @@ class PDBdataset():
                 file.write(str(number))
 
             # Write the data
+            print("Writing RMSDs to file...")
             with open(output_file, 'a', encoding='utf-8') as rmsd_file:
                 if first:
                     rmsd_file.write(f"reference\t{self.pdbs[0]}\n")
